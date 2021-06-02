@@ -27,35 +27,82 @@ class NumButton extends React.Component {
         // handleClick = () => {
         //         this.props.onClick(this.props.value);
         //       }
+        
             
             
-        render() {
+        render() 
+        {       let number = '';
+                let answer = 0;
+                let display = 0;
+
+                const getValue = (val) =>  {
+                       
+
+                        
+                        
+                       if (val === "add"){
+                               answer += parseInt(number);
+                               resetValue();
+                        }
+                        else if (val === "subtract"){
+                                answer -= parseInt(number);
+                                resetValue();
+                         }
+                         if(
+                                val !== "add" && 
+                                val !== "subtract" &&
+                                val !== "multiply" &&
+                                val !== "divide" ){
+                                number+= val;
+                                console.log("Current number: " + number);
+                        }
+                        //  else if (val === "multiply"){
+                        //         answer *= parseInt(number);
+                        //         resetValue();
+                        //  }
+                        //  else if (val === "divide"){
+                        //         answer /= parseInt(number);
+                        //         resetValue();
+                        //  }
+                        //  else
+                        //        {
+                        //         number+= val;
+                        //         console.log("Current number: " + number);
+                        // }
+              
+                }
+                const resetValue = () =>{
+                        display = answer;
+                        console.log("Answer: " + answer);
+                        number = '';
+                }
+                
                 return      <div>
                                 <div>
-                                        <Button className="btn-styles" onClick={this.handleClick} value="one">{one}</Button>
-                                        <Button className="btn-styles">{two}</Button>
-                                        <Button className="btn-styles">{three}</Button>
+                                        <Button className="btn-styles" onClick={() => getValue(1)}>{one}</Button>
+                                        <Button className="btn-styles" onClick={() => getValue(2)}>{two}</Button>
+                                        <Button className="btn-styles" onClick={() => getValue(3)}>{three}</Button>
                                 </div>
                                 <div>
-                                        <Button className="btn-styles">{four}</Button>
-                                        <Button className="btn-styles">{five}</Button>
-                                        <Button className="btn-styles">{six}</Button>
+                                        <Button className="btn-styles"onClick={() => getValue(4)}>{four}</Button>
+                                        <Button className="btn-styles"onClick={() => getValue(5)}>{five}</Button>
+                                        <Button className="btn-styles"onClick={() => getValue(6)}>{six}</Button>
                                 </div>
                                 <div>
-                                        <Button className="btn-styles">{seven}</Button>
-                                        <Button className="btn-styles">{eight}</Button>
-                                        <Button className="btn-styles">{nine}</Button>
+                                        <Button className="btn-styles"onClick={() => getValue(7)}>{seven}</Button>
+                                        <Button className="btn-styles"onClick={() => getValue(8)}>{eight}</Button>
+                                        <Button className="btn-styles"onClick={() => getValue(9)}>{nine}</Button>
                                 </div>
                                 <div>
-                                        <Button className="btn-styles">{zero}</Button>
+                                        <Button className="btn-styles"onClick={() => getValue(0)}>{zero}</Button>
 
                                 </div>
                                 <div>
-                                        <Button className="btn-styles">{plus}</Button>
-                                        <Button className="btn-styles">{minus}</Button>
-                                        <Button className="btn-styles">{divide}</Button>
-                                        <Button className="btn-styles">{multiply}</Button>
-                                        <Button className="btn-styles">{equals}</Button>
+                                        <Button className="btn-styles" onClick={() => getValue("add")}>{plus}</Button>
+                                        <Button className="btn-styles" onClick={() => getValue("subtract")}>{minus}</Button>
+                                        <Button className="btn-styles" onClick={() => getValue("divide")}>{divide}</Button>
+                                        <Button className="btn-styles" onClick={() => getValue("multiply")}>{multiply}</Button>
+                                        {/* <Button className="btn-styles">{equals}</Button> */}
                                 </div>
                                 <div>
                                         <Answer></Answer>
