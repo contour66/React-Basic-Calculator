@@ -1,9 +1,12 @@
 import React from "react";
 
-    const Answer = (props) => {
-        return (
-            <div value={props.label}>Answer</div>
+   class Answer extends React.Component{
+    
+    render(){ 
+           return (
+            <div>{this.props.label}</div>
         )
     }
+}
 
 export default Answer;

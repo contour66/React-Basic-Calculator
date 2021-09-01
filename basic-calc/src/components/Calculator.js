@@ -7,35 +7,25 @@ import React from "react";
 import Container from 'react-bootstrap/Container';
 import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
+import { useState } from "react";
 
 
-class Calculator extends React.Component {
-  // state = {
-  //   number: 0
-  // };
+function Calculator(props) {
 
-  // getNumber = (event) => {
-  //   if(event.target.value != '/'
-  //   || event.target.value != '+'
-  //   || event.target.value != '-'
-  //   || event.target.value != '*'){
-  //     this.state.number+=event.target.value
-  //     console.log(this.state.number)
-  //   }
-  // }
-  concatenateNumber = (event) => {
-    this.setState(
-      prevState => ({ count: prevState.count + event.target.value })
-    )
-    console.log(event.target.value)
-  };
-  render(){
+
+  const inputchangehandler = (event) => {
+    this.setState = ({
+      userInput: event.target.value
+    })
+  }
+
+ 
     return (
       <div >
         <Container >
           <Row className="justify-content-md-center">
             <Col>
-              <Button value={'1'}/>
+              <Button value={'1'}  />
               <Button value={'2'} />
               <Button value={'3'} />
             </Col>
@@ -53,7 +43,7 @@ class Calculator extends React.Component {
               <Button value={'8'} />
               <Button value={'9'} />
             </Col>
-            
+
           </Row>
           <Row>
             <Col>
@@ -71,12 +61,11 @@ class Calculator extends React.Component {
               <Button value={'='} />
             </Col>
           </Row>
-          <Row><Answer value={this.concatenateNumber}/></Row>
+          <Row>  <Answer label={props.value}></Answer></Row>
         </Container>
 
-    </div>
+      </div>
     );
-  }
 }
 
-  export default Calculator;
+export default Calculator;
